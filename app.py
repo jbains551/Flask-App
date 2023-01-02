@@ -78,3 +78,13 @@ def delete(id):
     conn.close()
     flash('"{}" was successfully deleted'.format(post['title']))
     return redirect(url_for('index'))
+
+@app.route('/update_server', methods=['POST'])
+    def webhook():
+        if request.method == 'POST':
+            repo = git.Repo('path/to/git_repo')
+            origin = repo.remotes.origin
+origin.pull()
+return 'Updated PythonAnywhere successfully', 200
+        else:
+            return 'Wrong event type', 400
